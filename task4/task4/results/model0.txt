@@ -1,0 +1,140 @@
+
+
+-----------------------------------
+New Analysis started.
+Date and time: 26/11/2024 15:25:26
+New results follow.
+-----------------------------------
+
+RSiena version 1.4.7 (20 Feb 24)
+
+
+@1
+Estimation by stochastic approximation algorithm.
+=================================================
+
+Current random number seed is 37.
+Effects object used: effects 
+Model Type:
+ Standard actor-oriented model 
+Behavioral Model Type:
+ Standard behavior actor-oriented model ('restrict')
+Estimation method: unconditional moment estimation
+.
+
+Time duration for simulations in each period is 1.0.
+Standard errors are estimated with the likelihood ratio method.
+Dolby method (regression on scores) is used.
+Initial value of gain parameter is  0.4000000.
+Reduction factor for gain parameter is  0.5000000.
+Number of subphases in Phase 2 is 4.
+
+Initial parameter values are 
+  1. rate:  constant net rate (period 1)                    7.4542
+  2. rate:  constant net rate (period 2)                    6.8293
+  3. eval:  outdegree (density)                            -1.6130
+  4. eval:  reciprocity                                     0.0000
+  5. eval:  indegree - popularity (sqrt)                    0.0000
+  6. eval:  distance                                        0.0000
+  7. rate:  rate alcohol (period 1)                         0.9100
+  8. rate:  rate alcohol (period 2)                         1.0931
+  9. eval:  alcohol linear shape                            0.3470
+ 10. eval:  alcohol quadratic shape                         0.0000
+ 11. eval:  alcohol indegree                                0.0000
+
+
+Values of target statistics are
+  1. Amount of network change in period 1                               477.0000
+  2. Amount of network change in period 2                               437.0000
+  3. Number of ties                                                     909.0000
+  4. Number of reciprocated ties                                        548.0000
+  5. Sum of indegrees x sqrt(indegree)                                 1956.3520
+  6. Sum of ties x distance                                            -189.9997
+  7. Amount of behavioral change in period 1 on alcohol                  81.0000
+  8. Amount of behavioral change in period 2 on alcohol                 102.0000
+  9. alcohol centered sum                                                38.6667
+ 10. alcohol sum of cent. squares                                       357.9190
+ 11. alcohol indegrees                                                  184.9819
+These were calculated from the data.
+
+ 11 parameters, 11 statistics
+
+Estimation of derivatives by the LR method (type 1).
+
+
+@2
+End of stochastic approximation algorithm, phase 3.
+---------------------------------------------------
+
+Total of 1958 iterations.
+Parameter estimates based on 958 iterations,
+convergence diagnostics, covariance and derivative matrices based on 1000 iterations.
+
+Information for convergence diagnosis.
+Averages, standard deviations, and t-ratios for deviations from targets:
+  1.  -0.4570  18.6451  -0.0245 
+  2.   0.1240  17.4230   0.0071 
+  3.  -1.2970  31.6978  -0.0409 
+  4.  -0.6560  26.0060  -0.0252 
+  5.  -4.0713  96.9291  -0.0420 
+  6.   0.7183  22.1822   0.0324 
+  7.   0.2850   7.8595   0.0363 
+  8.  -0.3870   8.8293  -0.0438 
+  9.   0.5200  13.8115   0.0376 
+ 10.   1.0765  22.9730   0.0469 
+ 11.   4.1340  56.5775   0.0731 
+
+Good convergence is indicated by the t-ratios being close to zero.
+
+Overall maximum convergence ratio =  0.1273 .
+
+
+
+@2
+Estimation Results.
+-------------------
+
+Regular end of estimation algorithm.
+Total of 1958 iteration steps.
+
+
+@3
+Estimates and standard errors
+                             
+Network Dynamics
+ 1. rate:  constant net rate (period 1)                            8.6260  (   0.7510)
+ 2. rate:  constant net rate (period 2)                            7.3218  (   0.5933)
+ 3. eval:  outdegree (density)                                    -2.9602  (   0.1467)
+ 4. eval:  reciprocity                                             2.7044  (   0.0835)
+ 5. eval:  indegree - popularity (sqrt)                            0.2526  (   0.0657)
+ 6. eval:  distance                                               -0.1841  (   0.0426)
+
+Behavior Dynamics
+ 7. rate:  rate alcohol (period 1)                                 1.4197  (   0.2176)
+ 8. rate:  rate alcohol (period 2)                                 2.0928  (   0.3083)
+ 9. eval:  alcohol linear shape                                    0.2095  (   0.1680)
+10. eval:  alcohol quadratic shape                                -0.1737  (   0.0397)
+11. eval:  alcohol indegree                                        0.0498  (   0.0475)
+
+
+@3
+Covariance matrices
+                   
+Covariance matrix of estimates (correlations below diagonal):
+     0.564     -0.043      0.009      0.002     -0.004      0.000      0.022      0.013     -0.006      0.000      0.001
+    -0.096      0.352      0.010     -0.006     -0.004     -0.001      0.003      0.024      0.004      0.002     -0.002
+     0.084      0.118      0.022     -0.004     -0.009     -0.001      0.003      0.003      0.000      0.000      0.000
+     0.030     -0.127     -0.333      0.007      0.001      0.000      0.000     -0.002      0.000      0.000      0.000
+    -0.075     -0.111     -0.969      0.191      0.004      0.000     -0.001     -0.001      0.000      0.000      0.000
+    -0.010     -0.047     -0.114     -0.009      0.157      0.002      0.000      0.001      0.000      0.000      0.000
+     0.133      0.020      0.084     -0.006     -0.095     -0.001      0.047      0.008      0.000      0.000     -0.002
+     0.055      0.134      0.058     -0.063     -0.057      0.056      0.123      0.095      0.000      0.000     -0.003
+    -0.044      0.041     -0.012     -0.029      0.016      0.014      0.008      0.005      0.028      0.001     -0.007
+     0.012      0.077      0.060     -0.064     -0.056      0.015      0.047      0.039      0.095      0.002      0.000
+     0.034     -0.070      0.016      0.014     -0.015     -0.018     -0.150     -0.214     -0.877     -0.162      0.002
+
+Derivative matrix of expected statistics X by parameters and
+covariance/correlation matrix of X can be found using
+summary(ans) within R, or by using the 'verbose' option in Siena07.
+ 
+Total computation time 96.24 seconds.
