@@ -19,6 +19,13 @@ distance between actors, as a dyadic covariate this is stored in a
 `coDyadCovar` object.
 
 ```{r, echo=FALSE}
+library(RSiena)
+library(sna)
+library(parallel)
+library(igraph)
+library(RColorBrewer)
+library(ggraph)
+
 net1 <- as.matrix(read.csv("Glasgow/f1.csv", header = FALSE))
 net2 <- as.matrix(read.csv("Glasgow/f2.csv", header = FALSE))
 net3 <- as.matrix(read.csv("Glasgow/f3.csv", header = FALSE))
@@ -40,13 +47,14 @@ data
 We also plotted the networks using `ggraph`, the code will not be
 reported here as its not the focus of the task, but it available in the
 full source code. This plots will be used to get an idea of effects may
-be important and what is generally happening in the network.
+be important and what is generally happening in the network. The larger
+the distance between two actors the more transparent the tie.
 
-![Wave 1](task4/plots/Net1.png){width="314"}
+![Wave 1](task4/plots/Net1.png){width="677"}
 
-![Wave 2](task4/plots/Net2.png){width="267"}
+![Wave 2](task4/plots/Net2.png){width="677"}
 
-![Wave 3](task4/plots/Net3.png){width="267"}
+![Wave 3](task4/plots/Net3.png){width="677"}
 
 ### 4.1
 
@@ -256,33 +264,34 @@ file management code added to it, it was omitted for readability):
 
 ```{r, echo=FALSE}
 # Adapted from the "Practical 3: Estimating and interpreting SAOMs" lecture
-gof = function(model)
-{
 
   cl <- makeCluster(4) # with 4 workers
   # Indegree distribution
   gofId <- sienaGOF(
-    model,
+    model3,
     verbose = FALSE,
     varName = "net", IndegreeDistribution,
     cluster = cl
   )
+  plot(gofId)
   
   # Outdegree distribution
   gofOd <- sienaGOF(
-    model,
+    model3,
     verbose = FALSE,
     varName = "net", OutdegreeDistribution,
     cluster = cl
   )
+  plot(gofOd)
   
   # Triad census
   gofTC <- sienaGOF(
-    model,
+    model3,
     verbose = FALSE,
     varName = "net", TriadCensus,
     cluster = cl
   )
+  plot(gofTC, scale = TRUE, center = TRUE)
   
   # Geodesic distance
   GeodesicDistribution <- function(
@@ -305,26 +314,20 @@ gof = function(model)
     gdi
   }
   gofGD <- sienaGOF(
-    model,
+    model3,
     verbose = FALSE,
     varName = "net", GeodesicDistribution
   )
+  plot(gofGD)
   gofBeh <- sienaGOF(
-    model,
+    model3,
     verbose = FALSE,
     varName = "alcohol", BehaviorDistribution,
     cluster = cl
   )
-  stopCluster(cl)
-  
-  plot(gofId)
-  plot(gofOd)
-  plot(gofTD)
-  plot(gofGD)
   plot(gofBeh)
-}
+  stopCluster(cl)
 
-gof(model4)
 ```
 
 The results of each model are exported as txt files however we can
@@ -332,24 +335,14 @@ create html summary of the output by running (a screenshot of said
 summary follows right after):
 
 ```{r, echo=FALSE}
-siena.table(model4, type = "html", sig = TRUE)
+siena.table(model3, type = "html", sig = TRUE)
 ```
 
-![](task4/model3.png){width="181"}
+![](task4/model3.png){width="231" height="453"}
 
 As we can see both the t-ratios and the overall maximum convergence
 ratio satisfy our previously stated conditions for a satisfying
 convergence.
-
-![](task4/plots/gof/model3/alcohol_behaviour.png){width="204"}
-
-![](images/clipboard-1245071439.png){width="237"}
-
-![](task4/plots/gof/model3/outdegree_distribution.png){width="243"}
-
-![](task4/plots/gof/model3/triad_census.png){width="295"}
-
-![](task4/plots/gof/model3/geodist_distribution.png){width="303"}
 
 The goodness of fit on the other hand is poor. One of the criteria for a
 good fit is a p-value of auxiliary statistics (seen at the bottom of the
@@ -481,3 +474,17 @@ rate, on the grounds that a higher consumption may for example
 facilitate making ties because of its consumption often being a social
 event or instead causing ties to be removed because of problematic
 behaviors caused by its consumption.
+
+### 4.7
+
+SAOMs's strength and advantage over ERGMs is the ability to test
+hypothesis that require observing the evolution of either the network of
+the actors properties through time. Two examples of hypothesis we might
+want to test on the given network and alcohol data could be whether one
+specific gender has the tendency to increase its alcohol consumption. To
+test it we simply need to add the "effFrom" effect of Siena to the model
+on the alcohol behavior, this way the contribution of gender will be
+taken into account in its evolution. The second example could be whether
+isolate actors have the tendency to increase alcohol consumption. This
+requires us to integrate the "outIsolate" effect on the alcohol
+behavior.
