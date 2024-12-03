@@ -1,0 +1,37 @@
+---
+title: "Task1"
+author: "Nicola Taddei"
+output: pdf_document
+date: "2024-11-30"
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+## 1.1
+This assumption is a good approximation for networks where agents make decisions based solely on the current state of the network, disregarding past states, and where the network's dynamics are either continuous or sufficiently slow relative to the discrete-time intervals. This allows a discrete-time system to be approximated by a continuous-time one.
+
+For example, consider a network representing friendships in a high school class and the academic performance of each student. While the system may be naturally modeled as a discrete-time system—since students primarily interact in the classroom for specific hours each day—the gradual and slow changes in academic performance over a daily time scale make it reasonable to approximate this system as a Markovian continuous-time one.
+
+In contrast, this assumption breaks down in networks such as business relationships among companies and the quality of their manufactured products. In the manufacturing industry, reputation often plays a significant role, meaning that relationships between companies are influenced by the past values of their attributes. As a result, the Markovian assumption is violated in this context.
+
+## 1.2
+This assumption models agents as conscious and fully aware of the entire network, as they are presumed to make decisions based on its structure and actor-level attributes.
+
+The high school class and academic performance network is a fitting example where this assumption holds. In such a setting, students consciously choose their friendships according to network structure and agent attribues.
+
+On the other hand, in a network representing infectious contacts between individuals and super-spreading phenomena (where an actor-level attribute models the conditional probability of infecting another individual given a contact), this assumption breaks down. In such cases, actors often have involuntary, indirect contacts with others—for example, through shared surfaces in public transportation—thereby violating the assumption.
+
+## 1.3
+This assumption is introduced to simplify the probability distribution governing changes in the network structure or attributes. It is a reasonable approximation in scenarios where changes occur gradually over time and are relatively slow.
+
+For instance, consider a network where agents are companies, represented by a numerical value indicating their reputation, and a tie between two agents A and B signifies that company A is purchasing a service from company BB. In this case, events can be assumed to occur infrequently enough that they happen one at a time.
+
+However, if we also consider ties representing both the acquisition and the sale of a service, network changes will involve two ties simultaneously, as each transaction entails one company buying and another selling. This would violate the assumption of single-event changes.
+
+## 1.4
+This assumption is necessary for agents to make decisions that optimize a network-level objective function.
+
+For example, in the infectious contacts network discussed earlier, actors are unaware of the actor-level attributes and therefore cannot consciously make decisions to optimize a function of these attributes.
+
+In contrast, in the high school class example, the network is small enough for everyone to be aware of each other's academic performance. This awareness enables students to form friendships based on this attribute, thereby allowing decisions that align with a network-level objective.
