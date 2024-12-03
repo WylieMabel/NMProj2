@@ -15,7 +15,7 @@ install.packages('reticulate')
 library(reticulate)
 ```
 
-### Task 1:
+### Task 1: SAOM Modelling Assumptions
 
 #### 1)
 
@@ -271,7 +271,7 @@ percentage values by 4 to account for actor sampling.):
 
 -   Probability that actor d does not change anything: $p=9.6\%$
 
-### Task 3:
+### Task 3: Simulations from SAOM
 
 #### 1)
 Implement the missing code so that the function simulation can be used to simulate the network evolution. Document the code. The al- gorithm is described in the file Simulating from SAOM available in the Lecture notes and additional material section on Moodle. Unconditional simulation is used.
@@ -552,6 +552,6 @@ The p-value computed in iv) is 0, suggesting that the simulated networks are not
 
 This is further supported by the goodness of fit plots for the auxilliary statistics. The dashed grey lines in the plot define the 5% and 95% quantiles, and we can see that for 7 triad types (012, 102, 012C, 111D, 120C, 210, 300), the statistic for that triad type (red dots) lies outside this 90% range. This means that the model is a poor fit for these statistics as it is highly improbable that the observed network statistics are observed in the simulated networks.
 
-### Task 4:
+### Task 4: Estimation and Interpretation of SAOMs
 
 #### 1)
