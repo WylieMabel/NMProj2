@@ -551,8 +551,9 @@ ggplot(triadCensusDf, aes(fct_inorder(triad), nnodes)) +
   xlab("triad type") +
   ggtitle("Goodness of Fit of Triad Census Counts")
 ```
-Only 3 statistics in the observed network lie within the 95 CI (names 003, 030T, 030C), suggesting the model has a very poor fit.
-Additionally, the p-value in iv) is 0 so we can reject the null hypothesis that the manhobis difference is the same between the two. MORE INTERPRETATION
+The p-value computed in iv) is 0, suggesting that the simulated networks are not a good fit for the observed network at time 2. 
+
+This is further supported by the goodness of fit plots for the auxilliary statistics. The dashed grey lines in the plot define the 5% and 95% quantiles, and we can see that for 7 triad types (012, 102, 012C, 111D, 120C, 210, 300), the statistic for that triad type (red dots) lies outside this 90% range. This means that the model is a poor fit for these statistics as it is highly improbable that the observed network statistics are observed in the simulated networks.
 
 ### Task 4:
 
