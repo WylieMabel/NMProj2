@@ -412,7 +412,6 @@ Use the simulated values of the triad census counts to evaluate the model’s go
 
 ##### i)
 Standardize the simulated network statistics,i.e.,centered and scaled values of each type of triad given in the triadCensus object. Named the resulting object as triadCensusStd.
-(The centered and scaled values are computed as xstd = (x − x ̄)/σx with x ̄ the average and σx the standard deviation of the simulated distribution).
 
 ```{r}
 meanx <- apply(triadDF,2,mean)
@@ -474,10 +473,8 @@ mhdObs <- apply(triadCensusStdObs, 1, mhdWrapper)
 Compute the percentage of simulated networks with Mahalanobis distance equal or greater than the observed network Mahalanobis distance.
 
 ```{r}
-
-distGreater <- if_else(mhdSim >= 0, 0, 1)
+distGreater <- ifelse(mhdSim >= mhdObs, 1, 0)
 pval <- sum(distGreater) / length(distGreater)
-
 pval
 ```
 
